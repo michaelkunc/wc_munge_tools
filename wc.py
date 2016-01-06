@@ -1,4 +1,5 @@
-
+def test_the_tests():
+	return 'is this thing on?'
 
 def open_and_split(filepath):
 	with open(filepath) as f:
