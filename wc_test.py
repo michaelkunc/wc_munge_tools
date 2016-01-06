@@ -10,12 +10,24 @@ class WCTests(unittest.TestCase):
 
     def test_open_file(self):
         lines = wc.open_and_split('test_data.txt')
-        self.assertEqual('##############################################', lines[0])
+        self.assertEqual(
+            '##############################################', lines[0])
 
-    def test_clean_lines(self):
+    def test_clean_lines_include(self):
         lines = wc.open_and_split('test_data.txt')
         cleaned_lines = wc.clean_lines(lines, '@', 'include')
-        self.assertEqual("(1)  13 July     France     4-1 (3-0)  Mexico    @ Estadio Pocitos, Montevideo", cleaned_lines[0])
+        self.assertEqual(
+            "(1)  13 July     France     4-1 (3-0)  Mexico    @ Estadio Pocitos, Montevideo", cleaned_lines[0])
+
+    def test_clean_lines_exclude(self):
+        lines = wc.open_and_split('test_data.txt')
+        cleaned_lines = wc.clean_lines(lines, '#', 'exclude')
+        self.assertEqual("", cleaned_lines[0])
+
+    def test_clean_lines_error(self):
+        lines = wc.open_and_split('test_data.txt')
+        self.assertRaises(ValueError, wc.clean_lines, lines, "#", 'keep')
+
 
 
 if __name__ == '__main__':
