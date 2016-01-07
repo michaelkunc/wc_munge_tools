@@ -5,9 +5,6 @@ import wc
 
 class WCTests(unittest.TestCase):
 
-    def test_the_tests(self):
-        self.assertEqual('is this thing on?', wc.test_the_tests())
-
     def test_open_file(self):
         lines = wc.open_and_split('test_data.txt')
         self.assertEqual(
@@ -27,6 +24,17 @@ class WCTests(unittest.TestCase):
     def test_remove_lines_error(self):
         lines = wc.open_and_split('test_data.txt')
         self.assertRaises(ValueError, wc.remove_lines, lines, "#", 'keep')
+
+    def test_clear_empty_lines(self):
+        lines = wc.open_and_split('test_data.txt')
+        lines = wc.clear_empty_lines(lines)
+        self.assertEqual(60, len(lines))
+
+    def test_remove_substring(self):
+        lines = wc.open_and_split('test_data.txt')
+        lines = wc.remove_substring(lines, "#")
+        lines = wc.clear_empty_lines(lines)
+        self.assertEqual(' World Cup 1930 Uruguay, 13 July - 30 July', lines[0])
 
 
 
