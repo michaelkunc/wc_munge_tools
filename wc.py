@@ -6,8 +6,7 @@ def open_and_split(filepath):
 		lines = f.read().splitlines()
 		return lines
 
-
-def clean_lines(user_list, character, include_exclude):
+def remove_lines(user_list, character, include_exclude):
 	if include_exclude == 'include':
 		lines = [l for l in user_list if character in l]
 		return lines
@@ -16,3 +15,10 @@ def clean_lines(user_list, character, include_exclude):
 		return lines
 	else:
 		raise ValueError("Please enter 'include' or 'exclude' for the final argument")
+
+#allow this to accept an array of values
+def remove_substring(user_list, character):
+	lines = [ l.replace(character, "") for l in user_list]
+	return lines
+
+#would like to make all of these 'in place changes'
