@@ -16,9 +16,20 @@ class WCTests(unittest.TestCase):
         self.assertEqual(
             "(1)  13 July     France     4-1 (3-0)  Mexico    @ Estadio Pocitos, Montevideo", cleaned_lines[0])
 
+    def test_remove_lines_include_uppercase(self):
+        lines = wc.open_and_split('test_data.txt')
+        cleaned_lines = wc.remove_lines(lines, '@', "INclude")
+        self.assertEqual(
+            "(1)  13 July     France     4-1 (3-0)  Mexico    @ Estadio Pocitos, Montevideo", cleaned_lines[0])
+
     def test_remove_lines_exclude(self):
         lines = wc.open_and_split('test_data.txt')
         cleaned_lines = wc.remove_lines(lines, '#', 'exclude')
+        self.assertEqual("", cleaned_lines[0])
+
+    def test_remove_lines_exclude_uppercase(self):
+        lines = wc.open_and_split('test_data.txt')
+        cleaned_lines = wc.remove_lines(lines, '#', 'exCLUDE')
         self.assertEqual("", cleaned_lines[0])
 
     def test_remove_lines_error(self):
@@ -35,6 +46,8 @@ class WCTests(unittest.TestCase):
         lines = wc.remove_substring(lines, "#")
         lines = wc.clear_empty_lines(lines)
         self.assertEqual(' World Cup 1930 Uruguay, 13 July - 30 July', lines[0])
+
+
 
 
 

@@ -6,10 +6,10 @@ def open_and_split(filepath):
 
 
 def remove_lines(user_list, character, include_exclude):
-    if include_exclude == 'include':
+    if include_exclude.lower() == 'include':
         lines = [l for l in user_list if character in l]
         return lines
-    elif include_exclude == 'exclude':
+    elif include_exclude.lower() == 'exclude':
         lines = [l for l in user_list if character not in l]
         return lines
     else:
@@ -24,3 +24,7 @@ def clear_empty_lines(user_list):
 def remove_substring(user_list, character):
     lines = [l.replace(character, "") for l in user_list]
     return lines
+
+
+def smaller(first_list, second_list):
+    return len(first_list) > second_list
