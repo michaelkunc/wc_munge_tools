@@ -20,11 +20,14 @@ def remove_lines(user_list, character, include_exclude):
 def clear_empty_lines(user_list):
     return filter(None, user_list)
 
-
 def remove_substring(user_list, character):
-    lines = [l.replace(character, "") for l in user_list]
-    return lines
+    return  [l.replace(character, "") for l in user_list]
 
+def replace_substring(user_list, old_character, new_character):
+    return [l.replace(old_character, new_character) for l in user_list]
 
 def smaller(first_list, second_list):
-    return len(first_list) > second_list
+    return len(first_list) > len(second_list)
+
+def replace_single_substring(user_list, index, old_character, new_character):
+    return user_list[index].replace(old_character, new_character)

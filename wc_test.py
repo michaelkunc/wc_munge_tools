@@ -5,6 +5,7 @@ import wc
 
 class WCTests(unittest.TestCase):
 
+
     def test_open_file(self):
         lines = wc.open_and_split('test_data.txt')
         self.assertEqual(
@@ -46,6 +47,21 @@ class WCTests(unittest.TestCase):
         lines = wc.remove_substring(lines, "#")
         lines = wc.clear_empty_lines(lines)
         self.assertEqual(' World Cup 1930 Uruguay, 13 July - 30 July', lines[0])
+
+    def test_replace_substring(self):
+        lines = wc.open_and_split('test_data.txt')
+        lines = wc.replace_substring(lines, "#", "$")
+        self.assertEqual('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$',lines[0])
+
+    def test_smaller(self):
+        first_list = [1,2,3]
+        second_list = [1,2,3,4]
+        self.assertFalse(wc.smaller(first_list, second_list))
+
+    def test_replace_single_substring(self):
+        lines = wc.open_and_split('test_data.txt')
+        lines[0] = wc.replace_single_substring(lines, 0, '#', '$')
+        self.assertEqual('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$',lines[0])
 
 
 
