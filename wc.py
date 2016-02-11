@@ -31,3 +31,7 @@ def smaller(first_list, second_list):
 
 def replace_single_substring(user_list, index, old_character, new_character):
     return user_list[index].replace(old_character, new_character)
+
+#need to test this method
+def remove_excess_whitespace(user_list):
+    return [' '.join(l.split()) for l in list]
