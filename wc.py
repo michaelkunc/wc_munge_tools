@@ -35,3 +35,8 @@ def replace_single_substring(user_list, index, old_character, new_character):
 #need to test this method
 def remove_excess_whitespace(user_list):
     return [' '.join(l.split()) for l in list]
+
+#e.g. to combine "United States" to "UnitedStates"
+def combine_words(user_list, word):
+    combined_word = word.replace(" ","")
+    return replace_substring(user_list, word, combined_word)
