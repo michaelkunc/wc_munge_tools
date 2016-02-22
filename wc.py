@@ -32,7 +32,8 @@ def smaller(first_list, second_list):
 def replace_single_substring(user_list, index, old_character, new_character):
     return user_list[index].replace(old_character, new_character)
 
-#need to test this method
+#need to test this method. this is not working.
+#look at something like [l.strip() for l in list]
 def remove_excess_whitespace(user_list):
     return [' '.join(l.split()) for l in list]
 
@@ -45,3 +46,9 @@ def combine_words(user_list, word):
 def find_and_count(user_list, substring):
     lines = remove_lines(user_list, substring, 'include')
     return len(lines)
+    
+#this is a little broken
+def save_list_file(user_list, write_path):
+    with open(write_path, 'w') as f:
+        for u in user_list:
+            f.write(u)
