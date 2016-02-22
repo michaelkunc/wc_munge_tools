@@ -40,3 +40,8 @@ def remove_excess_whitespace(user_list):
 def combine_words(user_list, word):
     combined_word = word.replace(" ","")
     return replace_substring(user_list, word, combined_word)
+
+#finds all lines that include a given substring and returns the count
+def find_and_count(user_list, substring):
+    lines = remove_lines(user_list, substring, 'include')
+    return len(lines)
