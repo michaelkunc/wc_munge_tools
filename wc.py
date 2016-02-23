@@ -8,7 +8,8 @@ COMPARISON_OPERATORS = ['=', '!=', '^=', '<>', '>','<', '<=', '>=','IN','ANY',
 ['NOT', 'NOT IN', 'EXISTS']
 LOGICAL_OPERATORS = ['NOT', 'AND','OR']
 
-
+ALL_OPERATORS = SET_OPERATORS + ARITHMETIC_OPERATORS + CHARACTER_OPERATORS + COMPARISON_OPERATORS +
+LOGICAL_OPERATORS
 
 def open_and_split(filepath):
     with open(filepath) as f:
