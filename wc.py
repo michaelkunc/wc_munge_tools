@@ -1,10 +1,15 @@
+#sql constants to remove from statements. Note this
+
+# SQL_OPERATORS = []
+
 
 def open_and_split(filepath):
     with open(filepath) as f:
         lines = f.read().splitlines()
         return lines
 
-
+#this should really be somethig like 'filter lines' with maybe different 
+#keyworkds for 'include' and 'exclude'
 def remove_lines(user_list, character, include_exclude):
     if include_exclude.lower() == 'include':
         lines = [l for l in user_list if character in l]
@@ -32,10 +37,9 @@ def smaller(first_list, second_list):
 def replace_single_substring(user_list, index, old_character, new_character):
     return user_list[index].replace(old_character, new_character)
 
-#need to test this method. this is not working.
-#look at something like [l.strip() for l in list]
+#this now seems to be working
 def remove_excess_whitespace(user_list):
-    return [' '.join(l.split()) for l in list]
+    return [' '.join(l.split()) for l in user_list]
 
 #e.g. to combine "United States" to "UnitedStates"
 def combine_words(user_list, word):
@@ -47,6 +51,13 @@ def find_and_count(user_list, substring):
     lines = remove_lines(user_list, substring, 'include')
     return len(lines)
     
+
+#remove an array of characters
+def remove_substring_set(user_list, substring_set):
+    for s in substring_set:
+        user_list = remove_substring(user_list, s)
+    return user_list
+
 #this is a little broken
 def save_list_file(user_list, write_path):
     with open(write_path, 'w') as f:
