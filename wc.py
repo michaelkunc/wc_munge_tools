@@ -4,12 +4,10 @@
 SET_OPERATORS = ['UNION','UNION ALL', 'INTERSECT', 'MINUS']
 ARITHMETIC_OPERATORS = ['+','-','/','*']
 CHARACTER_OPERATORS =['||']
-COMPARISON_OPERATORS = ['=', '!=', '^=', '<>', '>','<', '<=', '>=','IN','ANY',
-['NOT', 'NOT IN', 'EXISTS']
+COMPARISON_OPERATORS = ['=', '!=', '^=', '<>', '>','<', '<=', '>=','IN','ANY','NOT', 'NOT IN', 'EXISTS']
 LOGICAL_OPERATORS = ['NOT', 'AND','OR']
 
-ALL_OPERATORS = SET_OPERATORS + ARITHMETIC_OPERATORS + CHARACTER_OPERATORS + COMPARISON_OPERATORS +
-LOGICAL_OPERATORS
+ALL_OPERATORS = SET_OPERATORS + ARITHMETIC_OPERATORS + CHARACTER_OPERATORS + COMPARISON_OPERATORS + LOGICAL_OPERATORS
 
 def open_and_split(filepath):
     with open(filepath) as f:
@@ -70,4 +68,4 @@ def remove_substring_set(user_list, substring_set):
 def save_list_file(user_list, write_path):
     with open(write_path, 'w') as f:
         for u in user_list:
-            f.write(u)
+            f.write('%s\n' %u)
