@@ -1,6 +1,13 @@
-#sql constants to remove from statements. Note this
+#sql constants to remove from statements. 
+#Note these are for the Oracle SQL dialect
 
-# SQL_OPERATORS = []
+SET_OPERATORS = ['UNION','UNION ALL', 'INTERSECT', 'MINUS']
+ARITHMETIC_OPERATORS = ['+','-','/','*']
+CHARACTER_OPERATORS =['||']
+COMPARISON_OPERATORS = ['=', '!=', '^=', '<>', '>','<', '<=', '>=','IN','ANY',
+['NOT', 'NOT IN', 'EXISTS']
+LOGICAL_OPERATORS = ['NOT', 'AND','OR']
+
 
 
 def open_and_split(filepath):
