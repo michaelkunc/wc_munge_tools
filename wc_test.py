@@ -4,16 +4,18 @@ import wc
 
 
 class WCTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(WCTests):
+        WCTests.lines = wc.open_and_split('test_data.txt')
 
 
     def test_open_file(self):
-        lines = wc.open_and_split('test_data.txt')
         self.assertEqual(
-            '##############################################', lines[0])
+            '##############################################', WCTests.lines[0])
 
     def test_remove_lines_include(self):
         lines = wc.open_and_split('test_data.txt')
-        cleaned_lines = wc.remove_lines(lines, '@', 'include')
+        cleaned_lines = wc.remove_lines(WCTests.lines, '@', 'include')
         self.assertEqual(
             "(1)  13 July     France     4-1 (3-0)  Mexico    @ Estadio Pocitos, Montevideo", cleaned_lines[0])
 
