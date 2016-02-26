@@ -14,10 +14,9 @@ class WCTests(unittest.TestCase):
             '##############################################', WCTests.lines[0])
 
     def test_remove_lines_include(self):
-        lines = wc.open_and_split('test_data.txt')
         cleaned_lines = wc.remove_lines(WCTests.lines, '@', 'include')
-        self.assertEqual(
-            "(1)  13 July     France     4-1 (3-0)  Mexico    @ Estadio Pocitos, Montevideo", cleaned_lines[0])
+        test_text = "(1)  13 July     France     4-1 (3-0)  Mexico    @ Estadio Pocitos, Montevideo"
+        self.assertEqual(test_text, cleaned_lines[0])
 
     def test_remove_lines_include_uppercase(self):
         lines = wc.open_and_split('test_data.txt')
