@@ -15,7 +15,7 @@ def open_and_split(filepath):
         return lines
 
 #this should really be somethig like 'filter lines' with maybe different 
-#keyworkds for 'include' and 'exclude'
+#keywords for 'include' and 'exclude'
 def remove_lines(user_list, character, include_exclude):
     if include_exclude.lower() == 'include':
         lines = [l for l in user_list if character in l]
