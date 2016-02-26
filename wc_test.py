@@ -19,8 +19,8 @@ class WCTests(unittest.TestCase):
 
     def test_remove_lines_include_uppercase(self):
         cleaned_lines = wc.remove_lines(WCTests.lines, '@', "INclude")
-        self.assertEqual(
-            "(1)  13 July     France     4-1 (3-0)  Mexico    @ Estadio Pocitos, Montevideo", cleaned_lines[0])
+        test_text = "(1)  13 July     France     4-1 (3-0)  Mexico    @ Estadio Pocitos, Montevideo"
+        self.assertEqual(test_text, cleaned_lines[0])
 
     def test_remove_lines_exclude(self):
         cleaned_lines = wc.remove_lines(WCTests.lines, '#', 'exclude')
@@ -40,11 +40,13 @@ class WCTests(unittest.TestCase):
     def test_remove_substring(self):
         lines = wc.remove_substring(WCTests.lines, "#")
         lines = wc.clear_empty_lines(lines)
-        self.assertEqual(' World Cup 1930 Uruguay, 13 July - 30 July', lines[0])
+        test_text = ' World Cup 1930 Uruguay, 13 July - 30 July'
+        self.assertEqual(test_text, lines[0])
 
     def test_replace_substring(self):
         lines = wc.replace_substring(WCTests.lines, "#", "$")
-        self.assertEqual('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$',lines[0])
+        test_text = '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
+        self.assertEqual(test_text,lines[0])
 
     def test_smaller(self):
         first_list = [1,2,3]
@@ -54,7 +56,8 @@ class WCTests(unittest.TestCase):
     def test_replace_single_substring(self):
         lines = WCTests.lines
         lines[0] = wc.replace_single_substring(WCTests.lines, 0, '#', '$')
-        self.assertEqual('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$',lines[0])
+        test_text = '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
+        self.assertEqual(test_text,lines[0])
 
 
 if __name__ == '__main__':
