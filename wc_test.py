@@ -4,6 +4,7 @@ import wc
 
 
 class WCTests(unittest.TestCase):
+
     @classmethod
     def setUpClass(WCTests):
         WCTests.lines = wc.open_and_split('test_data.txt')
@@ -31,11 +32,11 @@ class WCTests(unittest.TestCase):
         self.assertEqual("", cleaned_lines[0])
 
     def test_remove_lines_error(self):
-        self.assertRaises(ValueError, wc.remove_lines, WCTests.lines, "#", 'keep')
+        self.assertRaises(ValueError, wc.remove_lines,
+                          WCTests.lines, "#", 'keep')
 
     def test_clear_empty_lines(self):
-        lines = wc.clear_empty_lines(WCTests.lines)
-        self.assertEqual(60, len(lines))
+        self.assertEqual(60, len(wc.clear_empty_lines(WCTests.lines)))
 
     def test_remove_substring(self):
         lines = wc.remove_substring(WCTests.lines, "#")
@@ -46,18 +47,17 @@ class WCTests(unittest.TestCase):
     def test_replace_substring(self):
         lines = wc.replace_substring(WCTests.lines, "#", "$")
         test_text = '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
-        self.assertEqual(test_text,lines[0])
+        self.assertEqual(test_text, lines[0])
 
     def test_smaller(self):
-        first_list = [1,2,3]
-        second_list = [1,2,3,4]
+        first_list = [1, 2, 3]
+        second_list = [1, 2, 3, 4]
         self.assertFalse(wc.smaller(first_list, second_list))
 
     def test_replace_single_substring(self):
-        lines = WCTests.lines
-        lines[0] = wc.replace_single_substring(WCTests.lines, 0, '#', '$')
+        lines = wc.replace_single_substring(WCTests.lines, 0, '#', '$')
         test_text = '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
-        self.assertEqual(test_text,lines[0])
+        self.assertEqual(test_text, lines)
 
 
 if __name__ == '__main__':
