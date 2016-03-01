@@ -59,6 +59,12 @@ class WCTests(unittest.TestCase):
         test_text = '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
         self.assertEqual(test_text, lines)
 
+    def test_remove_excess_whitespace(self):
+        test_text = 'Group 1 | Argentina Chile France Mexico'
+        lines = wc.remove_excess_whitespace(WCTests.lines)
+        self.assertEqual(test_text, lines[4])
+
+
 
 if __name__ == '__main__':
     unittest.main()

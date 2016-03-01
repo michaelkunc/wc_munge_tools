@@ -69,3 +69,5 @@ def save_list_file(user_list, write_path):
     with open(write_path, 'w') as f:
         for u in user_list:
             f.write('%s\n' %u)
+
+            
