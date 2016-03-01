@@ -64,6 +64,11 @@ class WCTests(unittest.TestCase):
         lines = wc.remove_excess_whitespace(WCTests.lines)
         self.assertEqual(test_text, lines[4])
 
+    def test_combine_words(self):
+        test_text = 'Group 4  |  UnitedStates  Paraguay   Belgium'
+        word_to_combine = 'United States'
+        lines = wc.combine_words(WCTests.lines, word_to_combine)
+        self.assertEqual(test_text, lines[7])
 
 
 if __name__ == '__main__':
